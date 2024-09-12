@@ -2,8 +2,10 @@ import { Fragment, useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Navbar, HotelCard,Categories} from "../../components";
-import { useCategory } from "../../context";
+import { Navbar, HotelCard,Categories,SearchStayWithDate} from "../../components";
+import { useCategory,useDate,useFilter } from "../../context";
+import { Filter } from "../../components";
+import {getHotelsByPrice, getHotelsByRoomsAndBeds,getHotelsByPropertyType,getHotelsByRatings,getHotelsByCancelation} from "../../utils";
 
 export const Home = () => {
 
@@ -12,6 +14,9 @@ export const Home = () => {
   const [testData,setTestData] = useState([]);
   const [hotels, setHotels] = useState([]);
   const {hotelCategory} = useCategory();
+  const {isSearchModalOpen} = useDate();
+  const {isFilterModalOpen,priceRange,noOfBathrooms,noOfBedrooms,noOfBeds,propertyType,traveloRating,isCancelable} = useFilter();
+
 
   useEffect(() => {
     (async () => {
@@ -43,8 +48,13 @@ export const Home = () => {
       },1000)
   }
 
+ const filteredHotelByPrice = getHotelsByPrice(hotels,priceRange);
+ const filteredHotelsByBedsAndRooms = getHotelsByRoomsAndBeds(filteredHotelByPrice,noOfBathrooms,noOfBedrooms,noOfBeds);
+ const filteredHotelsByPropertyType = getHotelsByPropertyType(filteredHotelsByBedsAndRooms,propertyType)
+ const filteredHotelByRatings = getHotelsByRatings(filteredHotelsByPropertyType,traveloRating)
+const filteredHotelByCancelation = getHotelsByCancelation(filteredHotelByRatings,isCancelable);
   return (
-    <Fragment>
+    <div className="relative">
       <Navbar />
        <Categories />
           {
@@ -60,13 +70,18 @@ export const Home = () => {
               >
                  <main className="main d-flex align-center wrap gap-larger">
                   {
-                    hotels && hotels.map(hotel => <HotelCard key={hotel._id} hotel={hotel}/>)
+                  filteredHotelByCancelation && filteredHotelByCancelation.map(hotel => <HotelCard key={hotel._id} hotel={hotel}/>)
                   }
                  </main>
               </InfiniteScroll>
             ) : (<></>)
           }
-      
-    </Fragment>
+       {
+        isSearchModalOpen && <SearchStayWithDate></SearchStayWithDate>
+       }
+       {
+         isFilterModalOpen && <Filter/>
+       }
+    </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useState,createContext,useContext } from "react";
 
-const initialValue = "National Parks"
+const initialValue = ""
 
 const CategoryContext = createContext(initialValue);
 
