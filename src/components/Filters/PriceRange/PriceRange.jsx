@@ -48,8 +48,8 @@ export const PriceRange = () => {
           getAriaValueText={valuetext}
           onChange={handlePriceRange}
           min={100}
-          max={2500}
-          disableSwap
+          max={20000}
+          disableSwap 
         />
       </Box>
     </div>

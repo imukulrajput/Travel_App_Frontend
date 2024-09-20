@@ -8,7 +8,7 @@ export const FreeCancel = () =>{
     const handleCancelChange = (event) =>{
          filterDispatch({
                  type: "CANCELABLE",
-                  payload: event.taget.checked
+                  payload: event.target.checked
          })
     }
 

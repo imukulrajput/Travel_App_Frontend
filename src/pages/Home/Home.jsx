@@ -1,11 +1,14 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Navbar, HotelCard,Categories,SearchStayWithDate} from "../../components";
-import { useCategory,useDate,useFilter } from "../../context";
-import { Filter } from "../../components";
+import { Navbar, HotelCard,Categories,SearchStayWithDate,ProfileDropDown} from "../../components";
+import { useCategory,useDate,useFilter,useAuth,useAlert} from "../../context";
+import { Filter,Alert } from "../../components";
 import {getHotelsByPrice, getHotelsByRoomsAndBeds,getHotelsByPropertyType,getHotelsByRatings,getHotelsByCancelation} from "../../utils";
+import { AuthModal } from "../../components";
+import { Footer } from "../../components";
+
 
 export const Home = () => {
 
@@ -16,7 +19,10 @@ export const Home = () => {
   const {hotelCategory} = useCategory();
   const {isSearchModalOpen} = useDate();
   const {isFilterModalOpen,priceRange,noOfBathrooms,noOfBedrooms,noOfBeds,propertyType,traveloRating,isCancelable} = useFilter();
+  
 
+  const {  isAuthModalOpen , isDropDownModalOpen } = useAuth();
+  const { alert } = useAlert();  
 
   useEffect(() => {
     (async () => {
@@ -58,6 +64,7 @@ const filteredHotelByCancelation = getHotelsByCancelation(filteredHotelByRatings
       <Navbar />
        <Categories />
           {
+          
             hotels && hotels.length > 0 ? (
               <InfiniteScroll 
               dataLength={hotels.length}
@@ -76,12 +83,18 @@ const filteredHotelByCancelation = getHotelsByCancelation(filteredHotelByRatings
               </InfiniteScroll>
             ) : (<></>)
           }
+          { isDropDownModalOpen && <ProfileDropDown />}
        {
         isSearchModalOpen && <SearchStayWithDate></SearchStayWithDate>
        }
        {
          isFilterModalOpen && <Filter/>
        }
+       { 
+        isAuthModalOpen && <AuthModal />
+       }
+       { alert.open && <Alert /> }
+      <Footer />
     </div>
   );
 };

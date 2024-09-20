@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
-import { HotelCard, Navbar } from "../../components"
-import { useDate,useCategory} from "../../context";
+import { HotelCard, Navbar,Alert } from "../../components"
+import { useDate,useCategory,useAlert} from "../../context";
 import axios from "axios";
 
 export const SearchResult = () =>{
@@ -8,6 +8,7 @@ export const SearchResult = () =>{
     const {destination} = useDate();
     const {hotelCategory} = useCategory();
     const [hotels,setHotels] = useState([]); 
+    const { alert } = useAlert();
 
      useEffect(()=>{
 
@@ -23,7 +24,7 @@ export const SearchResult = () =>{
             }
           })();
 
-     },[destination]);
+     },[destination,hotelCategory]);
 
      const filteredSearchResults = hotels.filter(({city,address,state}) => address.toLowerCase() === destination.toLowerCase() ||
      city.toLowerCase() === destination.toLowerCase() ||
@@ -38,6 +39,7 @@ export const SearchResult = () =>{
                     filteredSearchResults ? filteredSearchResults.map((hotel) => (<HotelCard key={hotel._id} hotel={hotel}/>) ): (<h3>Nothing found</h3>)
                 }
             </section>
+            { alert.open && <Alert />}
         </Fragment>
       );
 

@@ -48,7 +48,7 @@ export const filterReducer = (state,{type,payload}) =>{
                     case "CANCELABLE":
                         return {
                             ...state,
-                            isCancelable: payload,
+                            isCancelable:payload,
                         }    
                     case "CLEAR_ALL":
                         return {

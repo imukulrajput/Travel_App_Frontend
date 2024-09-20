@@ -47,7 +47,15 @@ export const dateReducer = (state,{type,payload}) =>{
                             ...state,
                             isSearchModalOpen: !state.isSearchModalOpen,
                         }
-
+                        case "CLEAR_INPUTS":
+                            return {
+                              ...state,
+                              destination:null,
+                              checkinDate: null,
+                              checkoutDate: null,
+                              guests: 0
+                            }
+                        
 
             default:
                 return state;

@@ -1,7 +1,7 @@
 import { DateSelector } from "../DateSelector/DateSelector";
 import "./SearchStayWithDate.css";
 import { useDate, useCategory } from "../../context";
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useRef} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,8 @@ export const SearchStayWithDate = () => {
   const { hotelCategory } = useCategory(); 
 
   const navigate = useNavigate();
+  const modalRef = useRef(null);
+  const resultRef = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -57,6 +59,7 @@ export const SearchStayWithDate = () => {
           type: "CLOSE_SEARCH_MODAL"
         })
     navigate(`/hotels/${destination}`)
+    
   }
 
   const destinationOptions = hotels.filter(
@@ -67,12 +70,33 @@ export const SearchStayWithDate = () => {
       country.toLowerCase().includes(destination.toLowerCase())
   );
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target) && 
+      resultRef.current && 
+      !resultRef.current.contains(event.target)) {
+        dateDispatch({
+          type: "CLOSE_SEARCH_MODAL",
+        });
+          
+      }
+    };
+
+    // Add event listener
+    document.addEventListener("mousedown", handleClickOutside); 
+
+    // Cleanup the event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalRef, dateDispatch]);
+
   return (
     <div className="destination-container">
-      <div className="destination-options d-flex align-center absolute">
+      <div className="destination-options d-flex align-center absolute"  ref={modalRef}>
         <div className="location-container">
           <label className="label">Where</label>
-          <input
+          <input 
             value={destination}
             onChange={handleDestinationChange}
             onFocus={handleDestinationFocus}
@@ -105,7 +129,7 @@ export const SearchStayWithDate = () => {
       </div>
 
       {isSearchResultOpen && (
-        <div className="search-result-container absolute">
+        <div className="search-result-container absolute"   ref={resultRef}>
           {destinationOptions &&
             destinationOptions.map(({ address, city }) => (
               <p

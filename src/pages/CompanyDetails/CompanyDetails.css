@@ -1,0 +1,83 @@
+/* Container Styling */
+.company-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color); /* Using background color variable */
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Heading Styling */
+.company-details-container h1 {
+    font-size: 2.5rem;
+    color: var(--text-color-primary); /* Using text color variable */
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); /* Gradient with primary and accent colors */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+    animation: fadeInText 1s ease-out forwards;
+}
+
+/* Button Styling */
+.company-details-container button {
+    font-size: 1.25rem;
+    color: white;
+    background-color: var(--primary-color); /* Using primary color */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Hover Effect */
+.company-details-container button:hover {
+    background-color: var(--text-color-primary); /* Using text color for hover effect */
+    transform: translateY(-3px);
+}
+
+/* Button Active Effect */
+.company-details-container button:active {
+    background-color: var(--accent-color); /* Using accent color for active effect */
+    transform: translateY(0);
+}
+
+/* Text Fade-In Animation */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .company-details-container h1 {
+        font-size: 2rem;
+    }
+
+    .company-details-container button {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .company-details-container h1 {
+        font-size: 1.75rem;
+    }
+
+    .company-details-container button {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+    }
+}
