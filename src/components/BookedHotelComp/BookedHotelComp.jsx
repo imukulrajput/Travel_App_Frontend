@@ -21,7 +21,7 @@ export const BookedHotelComp = () =>{
     
     <div className="os-container d-flex direction-column shadow gap">
       <div className="d-flex align-center justify-space-between br-bottom pd-small">
-          <h2>Your bookings</h2>
+          <h2>History</h2>
           <button className="button btn-auth btn-close cursor-pointer d-flex align-center justify-center">
               <span className="material-icons-outlined">
                   close

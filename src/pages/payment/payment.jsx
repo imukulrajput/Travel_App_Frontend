@@ -66,7 +66,7 @@ const handleConfrimBookingClick = async () => {
       key: "rzp_test_R9Tt1E6NKvWECt",
       amount: totalPayableAmount * 100,
       curreny: "INR",
-      name: "TravelO by Mukul",
+      name: "StaySavvy by Mukul",
       email: "mukulrajput34@gmail.com",
       contact: "7454945959",
       description: "Thank you for shopping with us.",
@@ -160,7 +160,7 @@ const handleConfrimBookingClick = async () => {
           </div>
           <div className="tag">
             Your booking is protected by{" "}
-            <strong className="strong">TravelO</strong> cover
+            <strong className="strong">StaySavvy</strong> cover
           </div>
           <div className="price-detail-container">
             <div className="price-distribution d-flex direction-column">

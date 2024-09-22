@@ -98,7 +98,7 @@ export const ProfileDropDown = () => {
         onClick={handleBookedHotelClick}
       >
         <span className="material-icons-outlined">hotel</span>
-        Your Bookings
+         History
       </span>
       <span
         className="option-span logout cursor-pointer d-flex align-center gap-small"

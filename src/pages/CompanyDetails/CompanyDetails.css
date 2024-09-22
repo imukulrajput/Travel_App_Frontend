@@ -1,83 +1,130 @@
+/* Global Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    /* Prevent horizontal scrolling */
+}
+
 /* Container Styling */
 .company-details-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: var(--background-color); /* Using background color variable */
+    max-width: 800px;
+    margin: 2rem auto;
     padding: 2rem;
-    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: #333;
+    position: relative;
+    max-height: calc(100vh - 4rem); /* Ensure container height fits the viewport */
+    overflow-y: auto; /* Allow vertical scrolling */
+    padding: 1rem 2rem;
+}
+
+/* Hide scrollbar (for Webkit browsers like Chrome, Safari, and Edge) */
+.company-details-container::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+}
+
+/* For Firefox */
+.company-details-container {
+    scrollbar-width: none; /* Hides the scrollbar */
+}
+
+/* Ensure container is scrollable if content overflows */
+html, body {
+    height: 100%;
 }
 
 /* Heading Styling */
 .company-details-container h1 {
     font-size: 2.5rem;
-    color: var(--text-color-primary); /* Using text color variable */
-    font-weight: 700;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); /* Gradient with primary and accent colors */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 2rem;
-    animation: fadeInText 1s ease-out forwards;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-/* Button Styling */
+/* Paragraph Styling */
+.company-details-container p {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    color: #444;
+}
+
+/* Link Styling */
+.company-details-container a {
+    color: #0073e6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.company-details-container a:hover {
+    text-decoration: underline;
+}
+
 .company-details-container button {
+    display: inline-block;
     font-size: 1.25rem;
     color: white;
-    background-color: var(--primary-color); /* Using primary color */
+    background-color: var(--primary-color);
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
 }
 
 /* Button Hover Effect */
 .company-details-container button:hover {
-    background-color: var(--text-color-primary); /* Using text color for hover effect */
+    background-color: #005bb5;
     transform: translateY(-3px);
 }
 
 /* Button Active Effect */
 .company-details-container button:active {
-    background-color: var(--accent-color); /* Using accent color for active effect */
+    background-color: #003f88;
     transform: translateY(0);
 }
 
-/* Text Fade-In Animation */
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* Responsive Design */
+
+/* Tablet View */
 @media (max-width: 768px) {
+    .company-details-container {
+        padding: 1.5rem;
+    }
+
     .company-details-container h1 {
         font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
-    .company-details-container button {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
+    .company-details-container p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
     }
 }
 
+/* Mobile View */
 @media (max-width: 480px) {
-    .company-details-container h1 {
-        font-size: 1.75rem;
+    .company-details-container {
+        padding: 1rem;
+        max-height: calc(100vh - 2rem); /* Reduce height for better scrolling on mobile */
     }
 
-    .company-details-container button {
+    .company-details-container h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .company-details-container p {
         font-size: 0.9rem;
-        padding: 0.5rem 0.8rem;
+        margin-bottom: 0.75rem;
     }
 }
