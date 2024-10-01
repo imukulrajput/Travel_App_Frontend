@@ -174,5 +174,5 @@
 
 .btn-filter-close:hover {
   background-color: var(--accent-color);
-  transform: rotate(90deg);
+  
 }

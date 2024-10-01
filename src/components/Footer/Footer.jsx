@@ -21,7 +21,7 @@ export const Footer = () => {
         <div className="footer-section">
           <h3>Hosting</h3>
           <ul>
-            <li><a href="/airbnb-your-home">TravelO your home</a></li>
+            <li><a href="/airbnb-your-home">StaySavvy your home</a></li>
             <li><a href="/aircover-hosts">AirCover for Hosts</a></li>
             <li><a href="/hosting-resources">Hosting resources</a></li>
             <li><a href="/community-forum">Community forum</a></li>
@@ -30,19 +30,19 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="footer-section">
-          <h3>TravelO</h3>
+          <h3>StaySavvy</h3>
           <ul>
             <li><a href="/newsroom">Newsroom</a></li>
             <li><a href="/new-features">New features</a></li>
             <li><a href="/careers">Careers</a></li>
             <li><a href="/investors">Investors</a></li>
-            <li><a href="/emergency-stays">TravelO.org emergency stays</a></li>
+            <li><a href="/emergency-stays">StaySavvy.org emergency stays</a></li>
           </ul>
         </div>
       </div>
       <div className="footer-bottom">
         <div className="footer-bottom-left">
-          <span>© 2024 TravelO, Inc.</span>
+          <span>© 2024 StaySavvy, Inc.</span>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
           <a href="/sitemap">Sitemap</a>

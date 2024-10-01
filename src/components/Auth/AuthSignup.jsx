@@ -24,7 +24,7 @@ export const AuthSignup = () =>{
     }else{
        console.log("Invalid number");
     }
-       
+        
   }
 
   const handleNameChange = (event) =>{

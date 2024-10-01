@@ -65,7 +65,7 @@ export const AuthModal = () => {
             <span className="material-icons-outlined">close</span>
           </button>
         </div>
-        <div>
+        <div>   
           {selectedTab === "login" ? (
             <AuthLogin />
           ) : selectedTab === "signup" ? (
