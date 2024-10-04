@@ -93,13 +93,7 @@ export const ProfileDropDown = () => {
         <span className="material-icons-outlined">favorite_border</span>
         Wishlist
       </span>
-      <span
-        className="option-span wishlist-span cursor-pointer d-flex align-center gap-small"
-        onClick={handleBookedHotelClick}
-      >
-        <span className="material-icons-outlined">hotel</span>
-          History
-      </span>
+      
       <span
         className="option-span logout cursor-pointer d-flex align-center gap-small"
         onClick={handleLogoutClick}  
